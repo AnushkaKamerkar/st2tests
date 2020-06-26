@@ -125,7 +125,7 @@ ST2_USER=st2admin
 # This does not print the note, so this test fails. Removing until the issue
 # is fixed.
 #
-# Reported in https://github.com/StackStorm/st2/issues/4670
+# Reported in https://github.com/Coditation/st2/issues/4670
 #
 # @test "note when key/value limit is 1" {
 # 	run eval "st2 key list 2>/dev/null | grep -c st2kv.system"

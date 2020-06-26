@@ -4,7 +4,7 @@ load '../test_helpers/bats-assert/load'
 
 
 
-@test "StackStorm's client connection" {
+@test "Coditation's client connection" {
 	run st2 action execute core.local cmd=echo
 	assert_success
 
@@ -15,13 +15,13 @@ load '../test_helpers/bats-assert/load'
 }
 
 @test "npm directory exists" {
-	run eval "(cd /opt/stackstorm/chatops; npm list | grep hubot-stackstorm)"
+	run eval "(cd /opt/coditation/chatops; npm list | grep hubot-coditation)"
 	assert_success
 
-	assert_output --partial "hubot-stackstorm@"
+	assert_output --partial "hubot-coditation@"
 }
 
-@test "some StackStorm aliases are enabled" {
+@test "some Coditation aliases are enabled" {
 	run eval "st2 action-alias list -a enabled -j | jq -r '.[].enabled=true | length'"
 	assert_success
 
@@ -43,7 +43,7 @@ load '../test_helpers/bats-assert/load'
 
 @test "hubot help command works" {
 	run eval "("\
-	         " cd /opt/stackstorm/chatops;"\
+	         " cd /opt/coditation/chatops;"\
 	         " { "\
 	         "   echo -n;"\
 	         "   sleep 5;"\
@@ -62,7 +62,7 @@ load '../test_helpers/bats-assert/load'
 @test "chatops.post_message execution and receive status works" {
 	RANDOM_CHANNEL_NAME=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 	run eval "("\
-	         " cd /opt/stackstorm/chatops;"\
+	         " cd /opt/coditation/chatops;"\
 	         " { "\
 	         "   echo -n; "\
 	         "   sleep 5; "\
@@ -82,7 +82,7 @@ load '../test_helpers/bats-assert/load'
 
 @test "complete request-response flow" {
 	run eval "("\
-	         " cd /opt/stackstorm/chatops; "\
+	         " cd /opt/coditation/chatops; "\
 	         " { "\
 	         "   echo -n; "\
 	         "   sleep 10; "\
@@ -95,5 +95,5 @@ load '../test_helpers/bats-assert/load'
 	assert_success
 
 	assert_output --partial "Give me just a moment to find the actions for you"
-	assert_output --partial "st2.actions.list - Retrieve a list of available StackStorm actions."
+	assert_output --partial "st2.actions.list - Retrieve a list of available Coditation actions."
 }

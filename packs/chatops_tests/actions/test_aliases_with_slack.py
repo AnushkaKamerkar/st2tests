@@ -19,7 +19,7 @@ from slackclient import SlackClient
 # * SLACK_CHANNEL
 #   - the Slack channel to connect to
 # * SLACK_BOT_USERNAME
-#   - the Slack username for the StackStorm bot
+#   - the Slack username for the Coditation bot
 #   - this should be set to the same username as the SLACK_BOT_API_TOKEN
 # * SLACK_USER_USERNAME
 #   - the Slack username for the Python script impersonating a user

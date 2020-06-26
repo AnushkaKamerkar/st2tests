@@ -1,6 +1,6 @@
 # st2tests
 
-[![Build Status](https://circleci.com/gh/StackStorm/st2tests/tree/master.svg?style=shield)](https://circleci.com/gh/StackStorm/st2tests)
+[![Build Status](https://circleci.com/gh/Coditation/st2tests/tree/master.svg?style=shield)](https://circleci.com/gh/Coditation/st2tests)
 
 Congregation of all tests pertaining to release of st2 software.
 
@@ -15,7 +15,7 @@ sudo apt-get install -y bats jq
 2. Clone repo
 
 ```bash
-git clone https://github.com/StackStorm/st2tests.git
+git clone https://github.com/Coditation/st2tests.git
 ```
 
 3. Run tests or a specific test file

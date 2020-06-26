@@ -1,10 +1,10 @@
 ---
 vars:
-        base_repo_url: "https://github.com/StackStorm"
+        base_repo_url: "https://github.com/Coditation"
         pack_to_install_1: "datadog"
         pack_to_install_2: "consul"
         pack_to_install_with_no_config: "freight"
-        pack_to_install_non_master_default_branch: "https://github.com/StackStorm-Exchange/stackstorm-test2.git"
+        pack_to_install_non_master_default_branch: "https://github.com/Coditation-Exchange/coditation-test2.git"
         install_from_repo: "st2contrib"
         test_timeout: 180
 

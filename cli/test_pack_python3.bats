@@ -3,7 +3,7 @@ load '../test_helpers/bats-assert/load'
 
 skip_tests_if_st2_le_v3() {
     # Utility function which skips tests if st2 is v3.0.0 or below. The py3 tests
-    # here require the fix https://github.com/StackStorm/st2/pull/4674 that will
+    # here require the fix https://github.com/Coditation/st2/pull/4674 that will
     # not be released until v3.0.1.
 
     ST2_VER=$(st2 --version 2>&1)
@@ -13,21 +13,21 @@ skip_tests_if_st2_le_v3() {
     ST2_VER=$(echo ${ST2_VER//.})
 
     if [[ "${ST2_VER}" -le "300" ]]; then
-        skip "Python 3 imports are broken on StackStorm < 3.0.1, skipping tests"
+        skip "Python 3 imports are broken on Coditation < 3.0.1, skipping tests"
     fi
 }
 
 skip_tests_if_python3_is_not_available_or_if_already_running_under_python3() {
 	# Utility function which skips tests if python3 binary is not available on the system or if
-	# StackStorm components are already running under Python 3 (e.g. Ubuntu Xenial)
+	# Coditation components are already running under Python 3 (e.g. Ubuntu Xenial)
 	run python3 --version
 	if [[ "$status" -ne 0 ]]; then
 		skip "Python 3 binary not found, skipping tests"
 	fi
 
-	run /opt/stackstorm/st2/bin/python3 --version
+	run /opt/coditation/st2/bin/python3 --version
 	if [[ "$status" -eq 0 ]]; then
-		skip "StackStorm components are already running under Python 3, skipping tests"
+		skip "Coditation components are already running under Python 3, skipping tests"
 	fi
 }
 
@@ -35,16 +35,16 @@ skip_tests_if_python3_is_not_available_or_if_already_running_under_python3() {
 	skip_tests_if_st2_le_v3
 	skip_tests_if_python3_is_not_available_or_if_already_running_under_python3
 
-	if [[ ! -d /opt/stackstorm/packs/examples ]]; then
-		sudo cp -r /usr/share/doc/st2/examples/ /opt/stackstorm/packs/
+	if [[ ! -d /opt/coditation/packs/examples ]]; then
+		sudo cp -r /usr/share/doc/st2/examples/ /opt/coditation/packs/
 		[[ "$?" -eq 0 ]]
-		[[ -d /opt/stackstorm/packs/examples ]]
+		[[ -d /opt/coditation/packs/examples ]]
 	fi
 
 	st2 run packs.setup_virtualenv packs=examples -j
 	[[ "$?" -eq 0 ]]
 
-	st2-register-content --register-pack /opt/stackstorm/packs/examples/ --register-actions
+	st2-register-content --register-pack /opt/coditation/packs/examples/ --register-actions
 	[[ "$?" -eq 0 ]]
 }
 
@@ -62,7 +62,7 @@ skip_tests_if_python3_is_not_available_or_if_already_running_under_python3() {
 	assert_success
 	assert_output "succeeded"
 
-	run /opt/stackstorm/virtualenvs/examples/bin/python --version
+	run /opt/coditation/virtualenvs/examples/bin/python --version
 	assert_output --partial "Python 2.7"
 }
 
@@ -80,7 +80,7 @@ skip_tests_if_python3_is_not_available_or_if_already_running_under_python3() {
 	assert_success
 	assert_output "succeeded"
 
-	run /opt/stackstorm/virtualenvs/examples/bin/python --version
+	run /opt/coditation/virtualenvs/examples/bin/python --version
 	assert_success
 
 	assert_output --partial "Python 3."
@@ -91,7 +91,7 @@ skip_tests_if_python3_is_not_available_or_if_already_running_under_python3() {
 	run eval "echo '$RESULT' | jq -r '.result.stdout'"
 	assert_success
 
-	assert_output --partial "Using Python executable: /opt/stackstorm/virtualenvs/examples/bin/python"
+	assert_output --partial "Using Python executable: /opt/coditation/virtualenvs/examples/bin/python"
 	assert_output --partial "Using Python version: 3."
 
 	run eval "echo '$RESULT' | jq -r '.status'"
@@ -123,11 +123,11 @@ skip_tests_if_python3_is_not_available_or_if_already_running_under_python3() {
 	skip_tests_if_st2_le_v3
 	skip_tests_if_python3_is_not_available_or_if_already_running_under_python3
 
-	if [[ -d /opt/stackstorm/packs/examples ]]; then
+	if [[ -d /opt/coditation/packs/examples ]]; then
 		st2 run packs.uninstall packs=examples
 	fi
 
-	if [[ -d /opt/stackstorm/packs/python3_test ]]; then
+	if [[ -d /opt/coditation/packs/python3_test ]]; then
 		st2 run packs.uninstall packs=python3_test
 	fi
 }

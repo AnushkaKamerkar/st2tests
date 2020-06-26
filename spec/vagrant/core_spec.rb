@@ -22,15 +22,15 @@ BUILD_REDHAT_PACKAGES.each do |package|
   end
 end
 
-## StackStorm Package Installation
+## Coditation Package Installation
 ST2_PACKAGES = %w(st2common st2reactor st2actions st2api st2auth st2debug)
 ST2_DEBIAN_PACKAGES = %w(python-st2client)
 ST2_REDHAT_PACKAGES = %w(st2client)
 
 # APT Package Repository
-describe file('/etc/apt/sources.list.d/stackstorm.list'), :if => os[:family] == 'ubuntu' do
+describe file('/etc/apt/sources.list.d/coditation.list'), :if => os[:family] == 'ubuntu' do
   it { should be_file }
-  it { should contain 'deb https://downloads.stackstorm.net/deb/' }
+  it { should contain 'deb https://downloads.coditation.net/deb/' }
 end
 
 [ST2_PACKAGES, ST2_DEBIAN_PACKAGES].flatten.each do |package|
@@ -40,9 +40,9 @@ end
 end
 
 # YUM Package Repository
-describe file('/etc/yum.repos.d/stackstorm.repo'), :if => os[:family] == 'redhat' do
+describe file('/etc/yum.repos.d/coditation.repo'), :if => os[:family] == 'redhat' do
   it { should be_file }
-  it { should contain 'baseurl=https://downloads.stackstorm.net/rpm/fedora/20/deps/' }
+  it { should contain 'baseurl=https://downloads.coditation.net/rpm/fedora/20/deps/' }
 end
 
 [ST2_PACKAGES, ST2_REDHAT_PACKAGES].flatten.each do |package|
@@ -185,7 +185,7 @@ end
 
 describe file('/etc/mistral/mistral.conf') do
   it { should be_file }
-  it { should contain 'connection = mysql://mistral:StackStorm@localhost/mistral' }
+  it { should contain 'connection = mysql://mistral:Coditation@localhost/mistral' }
   it { should contain 'max_pool_size = 100' }
   it { should contain 'auth_enable = false' }
 end
@@ -310,12 +310,12 @@ describe command('ps ax') do
 end
 
 # st2web
-WEBUI_CONFIG_PATH='/opt/stackstorm/static/webui/config.js'
+WEBUI_CONFIG_PATH='/opt/coditation/static/webui/config.js'
 AUTH_FILE_PATH='/etc/st2/htpasswd'
 
 describe file(WEBUI_CONFIG_PATH) do
   it { should be_file }
-  it { should contain "name: 'StackStorm'" }
+  it { should contain "name: 'Coditation'" }
   it { should contain "url: '//:9101'" }
   it { should contain "auth: '//:9100'" }
 end

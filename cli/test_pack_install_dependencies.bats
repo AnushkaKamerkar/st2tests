@@ -24,7 +24,7 @@ load '../test_helpers/bats-assert/load'
 
 	assert_output "0.2.0"
 
-	run st2 pack install https://github.com/StackStorm/stackstorm-ms.git
+	run st2 pack install https://github.com/Coditation/coditation-ms.git
 	assert_failure
 
 	run eval "st2 pack get excel --json | jq -r .version"
@@ -53,7 +53,7 @@ load '../test_helpers/bats-assert/load'
 
 	assert_output "0.2.2"
 
-	run st2 pack install https://github.com/StackStorm/stackstorm-ms.git
+	run st2 pack install https://github.com/Coditation/coditation-ms.git
 	assert_failure
 
 	run eval "st2 pack get excel --json | jq -r .version"
@@ -84,7 +84,7 @@ load '../test_helpers/bats-assert/load'
 
 	assert_output "0.2.2"
 
-	run st2 pack install --skip-dependencies https://github.com/StackStorm/stackstorm-ms.git
+	run st2 pack install --skip-dependencies https://github.com/Coditation/coditation-ms.git
 	assert_success
 
 	run eval "st2 pack get excel --json | jq -r .version"
@@ -114,7 +114,7 @@ load '../test_helpers/bats-assert/load'
 	run eval "st2 pack list | grep -q powerpoint"
 	assert_failure
 
-	run st2 pack install https://github.com/StackStorm/stackstorm-ms.git
+	run st2 pack install https://github.com/Coditation/coditation-ms.git
 	assert_success
 
 	run eval "st2 pack get excel --json | jq -r .version"
@@ -129,7 +129,7 @@ load '../test_helpers/bats-assert/load'
 }
 
 @test "Successfully install the ms pack a second time" {
-	run st2 pack install https://github.com/StackStorm/stackstorm-ms.git
+	run st2 pack install https://github.com/Coditation/coditation-ms.git
 	assert_success
 
 	run eval "st2 pack get excel --json | jq -r .version"
@@ -147,7 +147,7 @@ load '../test_helpers/bats-assert/load'
 	run st2 pack remove excel powerpoint microsoft_test mssql microsoft_parent_test microsoft_broken_test
 	assert_success
 
-	run st2 pack install https://github.com/StackStorm/stackstorm-ms-parent.git
+	run st2 pack install https://github.com/Coditation/coditation-ms-parent.git
 	assert_success
 
 	run eval "st2 pack get excel --json | jq -r .version"
@@ -182,7 +182,7 @@ load '../test_helpers/bats-assert/load'
 	run eval "st2 pack list | grep -q powerpoint"
 	assert_failure
 
-	run st2 pack install https://github.com/StackStorm/stackstorm-ms-broken.git
+	run st2 pack install https://github.com/Coditation/coditation-ms-broken.git
 	assert_failure
 
 	run eval "st2 pack list | grep -q microsoft"

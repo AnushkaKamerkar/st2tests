@@ -16,7 +16,7 @@ load '../test_helpers/bats-assert/load'
 	run st2
 	assert_failure 2
 
-	assert_output --partial "CLI for StackStorm event-driven automation platform."
+	assert_output --partial "CLI for Coditation event-driven automation platform."
 	assert_output --partial "Enable debug mode"
 }
 
@@ -25,7 +25,7 @@ load '../test_helpers/bats-assert/load'
 	assert_success
 
 	assert_output --regexp "^usage:"
-	assert_output --partial "CLI for StackStorm event-driven automation platform."
+	assert_output --partial "CLI for Coditation event-driven automation platform."
 	assert_output --partial "Enable debug mode"
 }
 

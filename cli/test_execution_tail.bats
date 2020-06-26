@@ -6,14 +6,14 @@ load '../test_helpers/bats-assert/load'
 #       actual test), so instead of doing all of this in the setup() function,
 #       we just throw it into a SETUP test.
 @test "SETUP: reinstall the examples pack" {
-	sudo cp -r /usr/share/doc/st2/examples/ /opt/stackstorm/packs/
+	sudo cp -r /usr/share/doc/st2/examples/ /opt/coditation/packs/
 	[[ "$?" -eq 0 ]]
-	[[ -d /opt/stackstorm/packs/examples ]]
+	[[ -d /opt/coditation/packs/examples ]]
 
 	st2 run packs.setup_virtualenv packs=examples -j | grep -q "$STATUS_SUCCESS"
 	[[ "$?" -eq 0 ]]
 
-	st2-register-content --register-pack /opt/stackstorm/packs/examples/ --register-all
+	st2-register-content --register-pack /opt/coditation/packs/examples/ --register-all
 	[[ "$?" -eq 0 ]]
 }
 

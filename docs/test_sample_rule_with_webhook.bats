@@ -145,7 +145,7 @@ load '../test_helpers/bats-assert/load'
 # 	#     "result": {
 # 	#         "exit_code": 0,
 # 	#         "result": null,
-# 	#         "stderr": "st2.actions.python.UninstallPackAction: DEBUG    Deleting pack directory \"/opt/stackstorm/packs/examples\"\nst2.actions.python.UninstallPackAction: DEBUG    Deleting virtualenv \"/opt/stackstorm/virtualenvs/examples\" for pack \"examples\"\n",
+# 	#         "stderr": "st2.actions.python.UninstallPackAction: DEBUG    Deleting pack directory \"/opt/coditation/packs/examples\"\nst2.actions.python.UninstallPackAction: DEBUG    Deleting virtualenv \"/opt/stackstorm/virtualenvs/examples\" for pack \"examples\"\n",
 # 	#         "stdout": ""
 # 	#     },
 # 	#     "result_task": "delete packs",
@@ -171,7 +171,7 @@ load '../test_helpers/bats-assert/load'
 # 	#
 # 	# So we cannot use jq here
 # 	#
-# 	# Reported in https://github.com/StackStorm/st2/issues/4639
+# 	# Reported in https://github.com/Coditation/st2/issues/4639
 # 	#
 # 	run st2 run packs.uninstall packs=examples -j
 # 	assert_success
@@ -188,10 +188,10 @@ load '../test_helpers/bats-assert/load'
 # }
 
 # @test "examples pack installation and setup works" {
-# 	run sudo cp -r /usr/share/doc/st2/examples/ /opt/stackstorm/packs/
+# 	run sudo cp -r /usr/share/doc/st2/examples/ /opt/coditation/packs/
 # 	assert_success
 
-# 	[[ -d /opt/stackstorm/packs/examples ]]
+# 	[[ -d /opt/coditation/packs/examples ]]
 
 # 	run st2 run packs.setup_virtualenv packs=examples -j
 # 	assert_success
